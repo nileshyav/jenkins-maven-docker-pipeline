@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('github clone') {
             steps {
-                sh "Hello"
+                sh "ls -alh && pwd"
                 // sh 'rm -rf jenkins-maven-docker-pipeline'
             //   sh 'git clone https://github.com/nileshyav/jenkins-maven-docker-pipeline && cd jenkins-maven-docker-pipeline && pwd && ls -alh'
             }
