@@ -12,16 +12,21 @@ pipeline {
         stage('Build jar file'){
             steps {
                 // sh 'cd jenkins-maven-docker-pipeline &&  mvn package'
-                sh 'mvn clean package'
+                sh 'mvn clean package && pwd'
                 
                 
             }
         }
         stage('build docker image'){
             steps{
-                sh 'cd jenkins-maven-docker-pipeline && docker build -t javaapp .'
+                sh 'pwd && cd jenkins-maven-docker-pipeline && docker build -t javaapp .'
             }
             
+        }
+        stage{
+            steps{
+
+            }
         }
             
         }
