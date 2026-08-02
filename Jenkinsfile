@@ -19,7 +19,7 @@ pipeline {
         }
         stage('build docker image'){
             steps{
-                sh 'pwd && cd jenkins-maven-docker-pipeline && docker build -t javaapp .'
+                sh 'pwd  && docker build -t javaapp .'
             }
             
         }
