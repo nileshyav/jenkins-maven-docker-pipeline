@@ -20,12 +20,23 @@ pipeline {
         stage('build docker image'){
             steps{
                 sh 'pwd  && docker build -t javaapp .'
+                sh 'docker tag javaapp inilesh/java-maven-app:v1'
             }
             
         }
         stage('Deploying app'){
             steps{
-                sh 'pwd && docker run -d -p 80:8080 javaapp '
+                // sh 'pwd && docker run -d -p 80:8080 javaapp '
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_auth', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                // some block
+                sh '''
+                echo "hello"
+                echo "$user"
+                echo "$pass" | docker login -u "$user" --password-stdin
+                docker push inilesh/java-maven-app:v1
+                '''
+            }
+               
 
             }
         }
