@@ -1,4 +1,6 @@
-FROM openjdk:28-ea-oraclelinux10
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y openjdk-17-jdk
 
 WORKDIR /app
 
