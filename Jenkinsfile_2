@@ -5,6 +5,7 @@ pipeline{
     parameters {
     choice choices: ['main', 'test'], name: 'branch'
 
+
     }
 
 
@@ -17,16 +18,21 @@ pipeline{
 stages{
 
     stage('gitclone'){
-        when {
-            expression{
-                     params.branch == "test"
-            }
+        // when {
+        //     expression{
+        //              params.branch == "test"
+        //     }
            
-        }
+        // }
         steps{
             script{
-                gv = load 'script2.groovy'
-                gv.showWorkingDir()
+                if(params.branch == "main"){
+                    gv = load 'script2.groovy'
+                    gv.showWorkingDir()
+                }
+                else{
+                    echo "you are not in main branch"
+                }
             }
         }
     }
