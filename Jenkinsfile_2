@@ -19,7 +19,7 @@ stages{
     stage('gitclone'){
         when {
             expression{
-                     param.branch == "test"
+                     params.branch == "test"
             }
            
         }
