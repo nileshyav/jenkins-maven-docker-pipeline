@@ -1,4 +1,4 @@
-# CI/CD Pipeline for Spring Boot: Monolithic to Modular
+# Jenkins Pipeline for Spring Boot app
 
 This repository demonstrates the end-to-end automation of a Java Spring Boot web application using Jenkins, Maven, and Docker. It showcases the evolution of a CI pipeline from a standard Declarative Jenkinsfile to an advanced, parameterized pipeline utilizing external Groovy scripts for logic separation.
 
