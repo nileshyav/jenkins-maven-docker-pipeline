@@ -50,6 +50,11 @@ stages{
 
     stage("push image to dockerhub"){
         steps{
+            input message: 'Do you want to deploy',
+            ok: 'OK',
+            parameters: [choice(choices: ['DEV', 'Stage', 'Prod'],
+            name: 'ENV')]
+
             script{
                 if (params.image_repository == "dockerhub"){
                     gv.push_dockerhub()
