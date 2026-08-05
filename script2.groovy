@@ -15,7 +15,7 @@ def buildJar(){
 
 def buildImage(){
     sh '''
-        docker built -t javaapp .
+        docker build -t javaapp .
         docker tag  javaapp inilesh/java-maven-app:v1
         
     '''
