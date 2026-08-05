@@ -2,6 +2,18 @@ def gv
 pipeline{
     agent any
 
+    parameters {
+    choice choices: ['main', 'test'], name: 'branch'
+    
+    }
+
+
+    // environment {
+
+    // }
+
+
+
 stages{
 
     stage('gitclone'){
