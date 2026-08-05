@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    
 
     stages {
         stage('github clone') {
@@ -28,7 +29,7 @@ pipeline {
             steps{
                 // sh 'pwd && docker run -d -p 80:8080 javaapp '
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_auth', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                // some block
+                
                 sh '''
                 echo "hello"
                 echo "$user"
@@ -40,6 +41,7 @@ pipeline {
 
             }
         }
+        
             
         }
     }
