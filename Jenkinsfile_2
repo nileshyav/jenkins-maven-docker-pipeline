@@ -51,7 +51,7 @@ stages{
     stage("push image to dockerhub"){
         steps{
             script{
-                if params.image_repository == "dockerhub"{
+                if (params.image_repository == "dockerhub"){
                     gv.push_dockerhub()
                 }
                 else{
