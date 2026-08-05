@@ -4,10 +4,8 @@ pipeline{
 
     parameters {
     choice choices: ['main', 'test'], name: 'branch'
-    choice choices:["dockerhub", "ECR"], name: "image_repository"
+    // choice choices:["dockerhub", "ECR"], name: "image_repository"
     
-
-
     }
 
 stages{
@@ -56,11 +54,11 @@ stages{
             name: 'ENV')]
 
             script{
-                if (params.image_repository == "dockerhub"){
+                if (ENV == "Prod"){
                     gv.push_dockerhub()
                 }
                 else{
-                    sh 'echo "fail"'
+                    sh 'echo "Deploying to $ENV"'
                 }
             }
         }
