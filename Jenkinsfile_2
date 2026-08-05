@@ -4,16 +4,11 @@ pipeline{
 
     parameters {
     choice choices: ['main', 'test'], name: 'branch'
+    choice choices:["dockerhub", "ECR"], name: "image_repository"
+    
 
 
     }
-
-
-    // environment {
-
-    // }
-
-
 
 stages{
 

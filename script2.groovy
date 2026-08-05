@@ -13,5 +13,25 @@ def buildJar(){
     '''
 }
 
+def buildImage(){
+    sh '''
+        docker built -t javaapp .
+        docker tag  javaapp inilesh/java-maven-app:v1
+        
+    '''
+}
+
+def push_dockerhub(){
+    withCredentials([usernamePassword(credentialsId: 'dockerhub_auth', passwordVariable: 'pass', usernameVariable: 'user')]) {
+        sh '''
+            echo $pass | docker login -u user --password-stdin
+            echo "login success"
+            docker push inilesh/java-maven-app:v1
+
+        '''
+    // some block
+}
+}
+
 
 return this;
