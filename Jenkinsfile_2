@@ -8,7 +8,15 @@ stages{
         steps{
             script{
                 gv = load 'script2.groovy'
-                gv.sayHi()
+                gv.showWorkingDir()
+            }
+        }
+    }
+
+    stage('Building Jar '){
+        steps{
+            script{
+                gv.buildJar()
             }
         }
     }
