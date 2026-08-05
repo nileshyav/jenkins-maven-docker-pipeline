@@ -24,7 +24,7 @@ def buildImage(){
 def push_dockerhub(){
     withCredentials([usernamePassword(credentialsId: 'dockerhub_auth', passwordVariable: 'pass', usernameVariable: 'user')]) {
         sh '''
-            echo $pass | docker login -u user --password-stdin
+            echo $pass | docker login -u $user --password-stdin
             echo "login success"
             docker push inilesh/java-maven-app:v1
 
