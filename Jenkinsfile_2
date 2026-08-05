@@ -1,16 +1,14 @@
 pipeline{
-
+    agent any
 
 stages{
 
-stage('gitclone'){}
-
-
+stage('gitclone'){
+    steps{
+        echo "Hello"
+    }
 }
 
 
-
-
-
-
+}
 }
