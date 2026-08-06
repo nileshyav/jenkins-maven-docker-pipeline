@@ -2,13 +2,13 @@ def gv
 pipeline{
     agent any
 
-    parameters {
-    choice choices: ['main', 'test'], name: 'branch'
-    choice choices:["dockerhub", "ECR"], name: "image_repository"
+    // parameters {
+    // choice choices: ['main', 'test'], name: 'branch'
+    choice choices:["dockerhub"], name: "image_repository"
     
 
 
-    }
+    // }
 
 stages{
 
@@ -21,13 +21,12 @@ stages{
         // }
         steps{
             script{
-                if(params.branch == "main"){
+                if(BRANCH_NAME == "main"){
+                    echo "you are not in $BRANCH_NAME branch"
                     gv = load 'script2.groovy'
                     gv.showWorkingDir()
                 }
-                else{
-                    echo "you are not in main branch"
-                }
+                
             }
         }
     }
