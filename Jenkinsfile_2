@@ -2,30 +2,16 @@ def gv
 pipeline{
     agent any
 
-    parameters {
-    choice choices: ['main', 'test'], name: 'branch'
-    // choice choices:["dockerhub", "ECR"], name: "image_repository"
-    
-    }
-
 stages{
 
     stage('gitclone'){
-        // when {
-        //     expression{
-        //              params.branch == "test"
-        //     }
-           
-        // }
+        
         steps{
             script{
-                if(params.branch == "main"){
+                
                     gv = load 'script2.groovy'
                     gv.showWorkingDir()
-                }
-                else{
-                    echo "you are not in main branch"
-                }
+            
             }
         }
     }
@@ -39,6 +25,11 @@ stages{
     }
 
     stage("Build image"){
+        when{
+            expression{
+                BRANCH_NAME == 'main'
+            }
+        }
         steps{
             script{
                 gv.buildImage()
@@ -63,8 +54,5 @@ stages{
             }
         }
     }
-
-
-
 }
 }
