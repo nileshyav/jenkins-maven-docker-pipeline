@@ -25,10 +25,7 @@ stages{
     }
 
     stage("Build image"){
-        when{
-            expression{
-                BRANCH_NAME == 'main'
-            }
+        
         }
         steps{
             script{
@@ -37,22 +34,5 @@ stages{
         }
     }
 
-    stage("push image to dockerhub"){
-        steps{
-            input message: 'Do you want to deploy',
-            ok: 'OK',
-            parameters: [choice(choices: ['DEV', 'Stage', 'Prod'],
-            name: 'ENV')]
-
-            script{
-                if (ENV == "Prod"){
-                    gv.push_dockerhub()
-                }
-                else{
-                    sh 'echo "Deploying to $ENV"'
-                }
-            }
-        }
-    }
-}
+    
 }
