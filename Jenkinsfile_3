@@ -1,0 +1,20 @@
+@Library('nilesh-shard-lib')
+pipeline {
+    agent any
+
+    stages {
+        stage('show code') {
+            steps {
+                echo 'ls -alh'
+            }
+        }
+
+        stage("jar file building"){
+            steps{
+                script{
+                    buildJar()
+                }
+            }
+        }
+    }
+}
