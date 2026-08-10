@@ -1,4 +1,4 @@
-@Library('nilesh-shard-lib')
+library 'nilesh-shard-lib'
 pipeline {
     agent any
 
